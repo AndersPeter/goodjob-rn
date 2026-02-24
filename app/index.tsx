@@ -1,26 +1,25 @@
-import React from "react";
-import { Text, View } from "react-native";
+import { Container } from "@/src/components/layout/Container/Container";
+import { Screen } from "@/src/components/layout/Screen/Screen";
+import { Section } from "@/src/components/layout/Section/Section";
+import { Stack } from "@/src/components/layout/Stack/Stack";
+import { Text } from "@react-navigation/elements";
 
-type CatProps = {
-  name: string;
-};
-
-const Cat = (props: CatProps) => {
+export default function JobsScreen() {
   return (
-    <View>
-      <Text>Hello, I am {props.name}!</Text>
-    </View>
-  );
-};
+    <Screen scroll>
+      <Container>
+        <Section title="Good job app">
+          <Stack>
+            <Text>Jobboards here</Text>
+          </Stack>
+        </Section>
 
-const Cafe = () => {
-  return (
-    <View>
-      <Cat name="Maru" />
-      <Cat name="Jellylorum" />
-      <Cat name="Spot" />
-    </View>
+        <Section title="Recommended">
+          <Stack>
+            <Text>Jobboard</Text>
+          </Stack>
+        </Section>
+      </Container>
+    </Screen>
   );
-};
-
-export default Cafe;
+}
