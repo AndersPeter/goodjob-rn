@@ -1,24 +1,27 @@
-import React, { ReactNode } from "react";
-import { View } from "react-native";
+import { spacing, SpacingKey } from "@/src/theme/spacing";
+import { View, ViewProps } from "react-native";
 
-type StackProps = {
-  children: ReactNode;
-  space?: number;
+type StackProps = ViewProps & {
+  spacing?: SpacingKey;
 };
 
-export function Stack({ children, space = 16 }: StackProps) {
-  const items = React.Children.toArray(children);
-
+export function Stack({
+  children,
+  spacing: spacingKey = "md",
+  style,
+  ...rest
+}: StackProps) {
   return (
-    <View>
-      {items.map((child, index) => (
-        <View
-          key={index}
-          style={{ marginBottom: index < items.length - 1 ? space : 0 }}
-        >
-          {child}
-        </View>
-      ))}
+    <View
+      style={[
+        {
+          gap: spacing[spacingKey],
+        },
+        style,
+      ]}
+      {...rest}
+    >
+      {children}
     </View>
   );
 }
