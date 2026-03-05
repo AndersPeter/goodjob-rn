@@ -52,6 +52,10 @@ export default function LoginScreen() {
         onPress={handleLogin}
         disabled={loading}
       />
+      <Button
+        title="Don't have an account? Register"
+        onPress={() => router.replace("/register")}
+      />
     </View>
   );
 }

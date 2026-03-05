@@ -16,8 +16,8 @@ export default function AuthLayout() {
       <Tabs.Screen
         name="register"
         options={{
-          title: "Home",
-          tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />,
+          title: "Register",
+          tabBarIcon: () => <FontAwesome name="user" size={24} color="black" />,
         }}
       />
     </Tabs>

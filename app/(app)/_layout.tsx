@@ -1,10 +1,13 @@
 import { useAuth } from "@/src/auth/AuthContext";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Tabs, useRouter } from "expo-router";
+import { Redirect, Tabs, useRouter } from "expo-router";
 
 export default function AppLayout() {
-  const { logout } = useAuth();
+  const { status, logout } = useAuth();
   const router = useRouter();
+
+  if (status === "loading") return null;
+  if (status === "unauthenticated") return <Redirect href="/login" />;
 
   return (
     <Tabs>
@@ -42,7 +45,7 @@ export default function AppLayout() {
         listeners={{
           tabPress: (e) => {
             e.preventDefault();
-            logout().then(() => router.replace({ pathname: "(auth)/login" }));
+            logout().then(() => router.replace("/login"));
           },
         }}
       />
